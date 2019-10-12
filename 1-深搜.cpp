@@ -4,6 +4,7 @@
  #include <cmath>
  #include <cstring>
  using namespace std;
+
  int migong[12][12];
  int counts = 1, min_counts=100000;//counts为路径长度
  
