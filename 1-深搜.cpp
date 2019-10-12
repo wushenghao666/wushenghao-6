@@ -5,33 +5,38 @@
  #include <cstring>
  using namespace std;
  int migong[12][12];
- int counts = 0, min_counts=1000;
+ int counts = 0, min_counts=100000;//counts为路径长度
  
- int ways( int Sx, int Sy, int Fx, int Fy )//该函数返回值是路径数
+ int ways( int Sx, int Sy, int Fx, int Fy )//函数返回值是路径数量
  {
- 	counts ++;
-	 //每执行一次函数，距离+1
  	if( Sx == Fx && Sy == Fy )
  		{if(counts<min_counts)
  			min_counts=counts;
 		 return 1;
 		 }
-	 //到达终点
+	 //到达终点处理，也是函数的终止条件
 	migong[Sx][Sy] = 1;
 	 //表示我来过啦！
 	int num = 0;
-	if(!migong[Sx][Sy-1])
+	 //用以记录路径总数的变量
+	if(!migong[Sx][Sy-1]){
+		counts ++;
 		num += ways(Sx, Sy-1, Fx, Fy);
-	if(!migong[Sx][Sy+1])
+		counts --;}
+	if(!migong[Sx][Sy+1]){
+		counts ++;
 		num += ways(Sx, Sy+1, Fx, Fy);
-	if(!migong[Sx+1][Sy])
+		counts --;}
+	if(!migong[Sx+1][Sy]){
+		counts ++;
 		num += ways(Sx+1, Sy, Fx, Fy);
-	if(!migong[Sx-1][Sy])
+		counts --;}
+	if(!migong[Sx-1][Sy]){
+		counts ++;
 		num += ways(Sx-1, Sy, Fx, Fy);
-	 //四面来一次函数
+		counts --;}
+	 
 	migong[Sx][Sy] = 0;
-	counts --;
-	 //这两步是回退
 	return num;
  }
  
@@ -49,6 +54,9 @@
  			cin >> migong[i][j];
 	int way;
 	way = ways(Sx, Sy, Fx, Fy);
-	cout << way << endl << min_counts;
+	cout << way << endl ;
+	if(way) cout << min_counts;
+	else cout << 0;
+	 //异常处理
  	return 0;
  }
