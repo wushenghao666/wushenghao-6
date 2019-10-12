@@ -5,7 +5,7 @@
  #include <cstring>
  using namespace std;
  int migong[12][12];
- int counts = 0, min_counts=100000;//counts为路径长度
+ int counts = 1, min_counts=100000;//counts为路径长度
  
  int ways( int Sx, int Sy, int Fx, int Fy )//函数返回值是路径数量
  {
