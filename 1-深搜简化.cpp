@@ -41,6 +41,7 @@
  		for(int j=1; j<=m; j++)
  			cin >> migong[i][j];
 	Dfs(Sx, Sy, 1);
+	if (!ways) minstep = 0;
 	cout << ways << endl << minstep;
  	return 0;
  }
