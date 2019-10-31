@@ -12,7 +12,6 @@
  
  void Dfs( int x, int y, int step)//函数返回值是路径数量
  {
- 	//cout << "(" << x << "," << y << ""
  	if( x == Fx && y == Fy )
  		{ways++;
 		 if(step<minstep)
